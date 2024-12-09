@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html data-navigation-type="default" data-navbar-horizontal-shape="default" lang="en-US" dir="ltr">
+
+  <head>
+    <meta charset="utf-8">     
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+    <title>Recipe App</title>     
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+
+    <script>
+      function handleCredentialResponse(response) {
+        // Simple POST request with a JSON body using fetch
+        const request = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ credential: response.credential })
+        };
+        fetch('/auth/gsi/callback', request)
+        .then(async response => {
+            const isJson = response.headers.get('content-type')?.includes('application/json');
+            const data = isJson && await response.json();
+
+            // check for error response
+            if (!response.ok) {
+                console.log("IM IN HERE");
+                // get error message from body or default to response status
+                const error = (data && data.message) || response.status;
+                return Promise.reject(error);
+            }
+
+            //redirect
+            location.href ='/auth/gsi/session/'+ data.token;
+        })
+        .catch(error => {
+            element = document.getElementById("gsi_error"),
+            element.innerHTML = `Error: ${error}`;
+        });
+
+      }
+      window.onload = function () {
+        google.accounts.id.initialize({
+          client_id: "<%= Figaro.env.google_client_id %>",
+          callback: handleCredentialResponse
+        });
+        google.accounts.id.renderButton(
+          document.getElementById("gis_button"),
+          { theme: "outline", size: "large" }  // customization attributes
+        );
+        //google.accounts.id.prompt(); // also display the One Tap dialog
+      }
+    </script>
+  </head>
+
+  <body>
+
+    <%= yield %>
+
+  </body>
+</html>
