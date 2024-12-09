@@ -113,4 +113,11 @@ class WelcomeController < ApplicationController
     redirect_to select_domain_path # user selects a domain
   end
 
+private
+
+def user_params
+  params.permit(:first_name, :last_name, :email, :mobile, :password, :password_confirmation)
+end
+
+
 end
