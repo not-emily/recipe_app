@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  root 'welcome#index'
+  root 'recipes#index'
+
+  # Recipes
+  resources :recipes
 
   # Welcome
   get '/signin', to: 'welcome#signin', as: :signin

@@ -1,5 +1,8 @@
 class WelcomeController < ApplicationController
+  layout 'auth'
+
   def index
+    @recipes = Recipe.for_user(@current_user)
   end
 
   def signin

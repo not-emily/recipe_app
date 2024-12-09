@@ -1,0 +1,7 @@
+<h1>Recipes#new</h1>
+<p>Find me in app/views/recipes/new.html.erb</p>
+
+<%= form_tag(recipes_path, class: "form-validate", multipart: true) do %>
+    <%= render "recipe_form" %>
+
+<% end %>

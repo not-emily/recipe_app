@@ -1,0 +1,19 @@
+
+<div class="row g-5">
+    <div class="col-12 col-xl-8">
+
+    <h4 class="mb-3">Name</h4>
+    <input name='name' id='name' class="form-control mb-5" type="text" value="<%= @recipe.name %>" placeholder="Chocolate Chip Cookies">
+
+    <div class="mb-6">
+        <h4 class="mb-3">Cover Image</h4>
+        <input class="form-control" id="cover_image" name="cover_image" type="file">
+    </div>
+
+    <div class="mb-6">
+        <input type="hidden" id="user_id" name="user_id" value="<%= @current_user.id %>">
+        <button class="btn btn-primary" type="submit">Submit</button>
+    </div>
+
+    </div>
+</div>
