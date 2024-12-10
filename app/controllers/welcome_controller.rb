@@ -1,5 +1,6 @@
 class WelcomeController < ApplicationController
-  layout 'auth'
+  layout :resolve_layout
+
 
   def index
     @recipes = Recipe.for_user(@current_user)
@@ -20,7 +21,7 @@ class WelcomeController < ApplicationController
         if url[1]=="booking" && id
           booking_pages = [booking_step_1_path(id), booking_step_2_path(id), booking_step_3_path(id), booking_step_4_path(id)]
           if booking_pages.include? session[:last_page]
-            path = root_path
+            path = recipes_path
           else
             path = session[:last_page]
           end
@@ -28,7 +29,7 @@ class WelcomeController < ApplicationController
           path = session[:last_page]
         end
       else
-        path = root_path
+        path = recipes_path
       end
       redirect_to path
     else
@@ -116,11 +117,18 @@ class WelcomeController < ApplicationController
     redirect_to select_domain_path # user selects a domain
   end
 
-private
+  private
 
-def user_params
-  params.permit(:first_name, :last_name, :email, :mobile, :password, :password_confirmation)
-end
+  def user_params
+    params.permit(:first_name, :last_name, :email, :mobile, :password, :password_confirmation)
+  end
 
+  def resolve_layout
+    if action_name == "index"
+      "application"
+    else
+      "auth"
+    end
+  end
 
 end

@@ -4,6 +4,6 @@
 
 <ul>
 <% @recipes.each do |recipe| %>
-    <li><%= recipe %></li>
+    <li><%= image_tag url_for(recipe.cover_image), class: "img-fluid img-gallery"%><%= recipe.name %></li>
 <% end %>
 </ul>

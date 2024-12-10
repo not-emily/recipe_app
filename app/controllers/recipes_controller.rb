@@ -1,5 +1,5 @@
 class RecipesController < ApplicationController
-  before_action :authenticate_user, except: [:index]
+  before_action :authenticate_user
 
   def index
     @recipes = Recipe.for_user(@current_user)

@@ -1,0 +1,12 @@
+<% if session[:current_user] %>
+    <div class="nav-item">
+        <a href="<%= signout_path %>" class="nav-link">Sign out</a>
+    </div>
+<% else %>
+    <div class="nav-item">
+        <a href="<%= signin_path %>" data-rr-ui-event-key="/login" class="nav-link">Sign in</a>
+    </div>
+    <div class="nav-item">
+        <a href="<%= signup_path %>" data-rr-ui-event-key="/signup" class="nav-link">Sign up</a>
+    </div>
+<% end %>
