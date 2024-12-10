@@ -67,6 +67,4 @@ group :test do
 end
 
 gem 'figaro'
-gem "bootstrap"
-gem "sassc-rails"
 
