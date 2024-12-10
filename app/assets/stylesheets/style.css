@@ -1,0 +1,20 @@
+:root {
+    --color-primary: #DD2323;
+}
+
+/* Landing Header */
+#landing-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 25px;
+    color: white;
+    background-color: var(--color-primary);
+}
+
+#landing-header .landing-header__links {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+/* END Landing Header */

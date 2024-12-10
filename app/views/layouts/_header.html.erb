@@ -1,12 +1,19 @@
-<% if session[:current_user] %>
-    <div class="nav-item">
-        <a href="<%= signout_path %>" class="nav-link">Sign out</a>
+<header id="landing-header">
+    <div class="landing-header__logo">
+        <%= image_tag 'branding/demo_logo.png', class: "", height: "50px" %>
     </div>
-<% else %>
-    <div class="nav-item">
-        <a href="<%= signin_path %>" data-rr-ui-event-key="/login" class="nav-link">Sign in</a>
+    <div class="landing-header__links">
+        <% if session[:current_user] %>
+            <div class="nav-item">
+                <a href="<%= signout_path %>" class="btn btn-light">Sign out</a>
+            </div>
+        <% else %>
+            <div class="nav-item">
+                <a href="<%= signin_path %>" data-rr-ui-event-key="/login" class="nav-link">Sign in</a>
+            </div>
+            <div class="nav-item">
+                <a href="<%= signup_path %>" data-rr-ui-event-key="/signup" class="btn btn-light">Sign up</a>
+            </div>
+        <% end %>
     </div>
-    <div class="nav-item">
-        <a href="<%= signup_path %>" data-rr-ui-event-key="/signup" class="nav-link">Sign up</a>
-    </div>
-<% end %>
+</header>
