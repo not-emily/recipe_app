@@ -1,0 +1,12 @@
+production:
+  base_url: ''
+  postgres_user: 
+  postgres_password: 
+test:
+  base_url: ''
+  postgres_user: 
+  postgres_password: 
+development:                   
+  base_url: ''
+  postgres_user: 
+  postgres_password: 
