@@ -9,7 +9,12 @@ class RecipesController < ApplicationController
   end
 
   def new
-    @recipe = Recipe.new
+    @recipe = Recipe.new(:name => "")
+    @categories = Category.all
+    p "*" * 50
+    p "Categories"
+    p @categories
+    p "*" * 50
   end
 
   def create

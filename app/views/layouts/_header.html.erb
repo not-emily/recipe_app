@@ -5,6 +5,9 @@
     <div class="landing-header__links">
         <% if session[:current_user] %>
             <div class="nav-item">
+                <a href="<%= recipes_path %>" class="nav-link">My Recipes</a>
+            </div>
+            <div class="nav-item">
                 <a href="<%= signout_path %>" class="btn btn-light">Sign out</a>
             </div>
         <% else %>

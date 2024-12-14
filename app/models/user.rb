@@ -2,6 +2,7 @@ class User < ApplicationRecord
     attr_accessor :password, :password_confirmation, :new_password
     
     has_many :recipes
+    has_many :categories
     
     validates_presence_of          :first_name
     

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_12_09_230813) do
+ActiveRecord::Schema[7.1].define(version: 2024_12_13_165102) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -40,6 +40,26 @@ ActiveRecord::Schema[7.1].define(version: 2024_12_09_230813) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "name"
+    t.string "apikey"
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["apikey"], name: "index_categories_on_apikey"
+  end
+
+  create_table "recipe_categories", force: :cascade do |t|
+    t.integer "recipe_id"
+    t.integer "category_id"
+    t.string "apikey"
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["apikey"], name: "index_recipe_categories_on_apikey"
   end
 
   create_table "recipes", force: :cascade do |t|

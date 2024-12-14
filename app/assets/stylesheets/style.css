@@ -18,3 +18,11 @@
     gap: 20px;
 }
 /* END Landing Header */
+
+/* Category buttons */
+#category_buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 35px;
+}

@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   # Recipes
   resources :recipes
 
+  # Categories
+  post '/categories', to: 'categories#create', as: :create_category
+
   # Welcome
   get '/signin', to: 'welcome#signin', as: :signin
   post '/signin', to: 'welcome#signin_do', as: :do_signin
