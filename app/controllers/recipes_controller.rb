@@ -10,11 +10,7 @@ class RecipesController < ApplicationController
 
   def new
     @recipe = Recipe.new(:name => "")
-    @categories = Category.all
-    p "*" * 50
-    p "Categories"
-    p @categories
-    p "*" * 50
+    @categories = Category.for_user(@current_user.id)
   end
 
   def create
