@@ -45,7 +45,7 @@ class WelcomeController < ApplicationController
     user = User.new(user_params)
     if params[:password] == params[:password_confirmation]
       if user.save
-        flash[:notice] = "You can now sign in."
+        flash[:success] = "You can now sign in."
         redirect_to signin_path
       else
         flash[:error] = user.errors.full_messages
@@ -61,7 +61,7 @@ class WelcomeController < ApplicationController
     session[:current_user] = nil
     session[:user_id] = nil
     session[:user_expiry_time] = nil
-    flash[:error] = "You have been signed out."
+    flash[:notice] = "You have been signed out."
     redirect_to signin_path
   end
 
