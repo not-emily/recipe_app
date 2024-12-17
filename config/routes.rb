@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :recipes
 
   # Categories
+  get '/category/:category_apikey', to: 'categories#show', as: :category
   post '/categories', to: 'categories#create', as: :create_category
 
   # Welcome

@@ -1,9 +1,13 @@
 <h1>Recipes#index</h1>
 <p>Find me in app/views/recipes/index.html.erb</p>
-<a href="/recipes/new">Add new recipe</a>
+<a href="<%= new_recipe_path%>">Add new recipe</a>
 
 <ul>
 <% @recipes.each do |recipe| %>
-    <li><%= image_tag url_for(recipe.cover_image), class: "img-fluid img-gallery"%><%= recipe.name %></li>
+    <li><% if recipe.cover_image.attached? %><%= image_tag url_for(recipe.cover_image), class: "img-fluid img-gallery"%><% end %><%= recipe.name %></li>
 <% end %>
 </ul>
+
+<% @categories.each do |category|%>
+<a href="<%= category_path(category.apikey) %>"><%= category.name %></a>
+<% end %>

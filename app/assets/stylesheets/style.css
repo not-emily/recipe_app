@@ -26,3 +26,8 @@
     gap: 10px;
     margin-bottom: 35px;
 }
+
+#category_buttons > .selected-category {
+    background-color: var(--color-primary);
+    color: white;
+}
