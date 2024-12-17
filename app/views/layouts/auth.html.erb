@@ -2,13 +2,8 @@
 <html data-navigation-type="default" data-navbar-horizontal-shape="default" lang="en-US" dir="ltr">
 
   <head>
-    <meta charset="utf-8">     
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-  
-    <title>Recipe App</title>     
-
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= render 'layouts/head' %>
+    <%= javascript_include_tag 'toggle-password', 'data-turbolinks-track': 'reload' %>
 
     <script src="https://accounts.google.com/gsi/client" async defer></script>
 
@@ -57,15 +52,33 @@
   </head>
 
   <body>
-    <!-- FLASH START -->
-    <div class="row">
-      <div class="col">
-        <%= flash_messages %>
+    <main>
+      <div class="px-3 container-fluid">
+        <div class="min-vh-100 row">
+          <div class="d-flex align-items-center col-xl-5 col-lg-6 col-md-8">
+            <div class="w-100 py-5 px-md-5 px-xl-6 position-relative">
+              <div class="mb-4">
+                  <!-- FLASH START -->
+                  <div class="row">
+                      <div class="col"></div>
+                  </div>
+                  <!-- FLASH END -->
+                  <a href="/"><img class="mb-0" height="70px" src="/assets/branding/demo_icon.png"></a>
+              </div>
+              <%= yield %>
+            </div>
+          </div>
+          <div class="d-none d-md-block col-xl-7 col-lg-6 col-md-4">
+            <div class="bg-cover h-100 me-n3 position-relative">
+              <span style="box-sizing: border-box; display: block; overflow: hidden; width: initial; height: initial; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: absolute; inset: 0px;">
+                  <!--<img alt="" sizes="100vw" srcset="/_next/image?url=%2Fcontent%2Fimg%2Fphoto%2Fphoto-1497436072909-60f360e1d4b1.jpg&amp;w=320&amp;q=75 320w, /_next/image?url=%2Fcontent%2Fimg%2Fphoto%2Fphoto-1497436072909-60f360e1d4b1.jpg&amp;w=480&amp;q=75 480w, /_next/image?url=%2Fcontent%2Fimg%2Fphoto%2Fphoto-1497436072909-60f360e1d4b1.jpg&amp;w=640&amp;q=75 640w, /_next/image?url=%2Fcontent%2Fimg%2Fphoto%2Fphoto-1497436072909-60f360e1d4b1.jpg&amp;w=750&amp;q=75 750w, /_next/image?url=%2Fcontent%2Fimg%2Fphoto%2Fphoto-1497436072909-60f360e1d4b1.jpg&amp;w=828&amp;q=75 828w, /_next/image?url=%2Fcontent%2Fimg%2Fphoto%2Fphoto-1497436072909-60f360e1d4b1.jpg&amp;w=1080&amp;q=75 1080w, /_next/image?url=%2Fcontent%2Fimg%2Fphoto%2Fphoto-1497436072909-60f360e1d4b1.jpg&amp;w=1200&amp;q=75 1200w, /_next/image?url=%2Fcontent%2Fimg%2Fphoto%2Fphoto-1497436072909-60f360e1d4b1.jpg&amp;w=1920&amp;q=75 1920w, /_next/image?url=%2Fcontent%2Fimg%2Fphoto%2Fphoto-1497436072909-60f360e1d4b1.jpg&amp;w=2048&amp;q=75 2048w, /_next/image?url=%2Fcontent%2Fimg%2Fphoto%2Fphoto-1497436072909-60f360e1d4b1.jpg&amp;w=3840&amp;q=75 3840w" src="/_next/image?url=%2Fcontent%2Fimg%2Fphoto%2Fphoto-1497436072909-60f360e1d4b1.jpg&amp;w=3840&amp;q=75" decoding="async" data-nimg="fill" class="bg-image" style="position: absolute; inset: 0px; box-sizing: border-box; padding: 0px; border: none; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;">-->
+                  <img class="bg-image" src="/assets/customer/map_auth_bg-1a3d4ce860a470b6861ca017abb2a2b49d6640d8857aa72fd0f679ad5cd81e15.jpg">
+              </span>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-    <!-- FLASH END -->
-
-    <%= yield %>
+    </main>
 
   </body>
 </html>

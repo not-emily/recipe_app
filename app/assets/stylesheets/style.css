@@ -2,6 +2,11 @@
     --color-primary: #DD2323;
 }
 
+body {
+    height: 100vh;
+    margin: 0;
+}
+
 /* Landing Header */
 #landing-header {
     display: flex;
@@ -18,6 +23,39 @@
     gap: 20px;
 }
 /* END Landing Header */
+
+/* Auth layout */
+#auth {
+    height: 100%;
+    display: flex;
+}
+
+.auth-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 50%;
+    height: 100%;
+}
+.auth-content {
+    display: flex;
+    margin: auto;
+}
+
+.auth-right {
+    background-color: var(--color-primary);
+    height: 100%;
+    width: 50%;
+}
+
+#password-container {
+    display: flex;
+}
+
+#password-container > svg {
+    margin-left: 5px;
+}
+/* END Auth layout */
 
 /* Category buttons */
 #category_buttons {
