@@ -1,10 +1,40 @@
 :root {
-    --color-primary: #DD2323;
+    /* --color-primary: #DD2323; */
+    --color-primary: #44b52d;
+    --color-primary-lightest: #DEEED7;
+    --color-primary-lightest2: #F4F9F1;
+    --color-primary-light: #B3D9A3;
+    --color-primary-dark: #668C56;
+    --color-primary-dark1: #58784A;
+    --color-primary-dark2: #49643D;
+    --color-primary-dark3: #3A5031;
+    --color-primary-dark4: #2C3C25;
 }
 
 body {
-    height: 100vh;
+    height: 100%;
     margin: 0;
+}
+
+main {
+    margin: 50px 0;
+}
+
+.page-action-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.page-action-header h1 {
+    margin: 0;
+}
+
+.page-action-header a {
+    color: var(--color-primary-darkest);
+    text-decoration: none;
+
 }
 
 /* Landing Header */
@@ -57,7 +87,7 @@ body {
 }
 /* END Auth layout */
 
-/* Category buttons */
+/* New Recipe Category buttons */
 #category_buttons {
     display: flex;
     flex-wrap: wrap;
@@ -68,4 +98,46 @@ body {
 #category_buttons > .selected-category {
     background-color: var(--color-primary);
     color: white;
+}
+/* END New Recipe Category buttons */
+
+/* /recipes */
+#recipes__categories {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 50px;
+}
+
+@media screen and (max-width: 1000px) {
+    #recipes__categories {
+        grid-template-columns: 1fr;
+        gap: 35px;
+    }
+}
+
+#recipes__categories .category {
+    position: relative;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    padding: 30px;
+    border-radius: 20px;
+    background-color: var(--color-primary-lightest2);
+}
+#recipes__categories a {
+    text-decoration: none;
+}
+
+#recipes__categories h2 {
+    color: var(--color-primary-dark1);
+}
+
+
+#recipes__categories .category > img {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    padding-top: 20px;
+    height: 100%;
+    border-radius: 0 0 20px 0;
 }

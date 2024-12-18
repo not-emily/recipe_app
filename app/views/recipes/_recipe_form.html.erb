@@ -14,7 +14,7 @@
         <div id="category_buttons">
           <% if @categories.length() > 0 %>
             <% @categories.each do |category| %>
-              <button type="button" class="btn btn-outline-danger" data-key="<%= category.apikey %>"><%= category.name %></button>
+              <button type="button" class="btn btn-outline-danger" data-key="<%= category.apikey %>"><%= category.category_name %></button>
             <% end %>
           <% else %>
             <p id="no_category_notice">No categories yet! </p>
@@ -33,38 +33,3 @@
         </div>
     </div>
 </div>
-
-<!-- Modal -->
-<div class="modal fade" id="newCategoryModal" tabindex="-1" aria-labelledby="newCategoryModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="newCategoryModalLabel">New Category</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <!-- <%= form_tag(create_category_path) do %> -->
-      <div class="modal-body">
-        <div class="">
-          <div class="mb-3">
-            <label for="category_name" class="form-label">Name</label>
-            <input type="text" class="form-control" id="category_name" name="category_name" >
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="category_add_another" name="category_add_another">
-            <label class="form-check-label" for="category_add_another">
-              Add another category
-            </label>
-          </div>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <%= csrf_meta_tag %>
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button id="submit_new_category" type="button" class="btn btn-primary">Save changes</button>
-        <!-- <button type="submit" class="btn btn-primary">Save changes</button> -->
-      </div>
-      <!-- <% end %> -->
-    </div>
-  </div>
-</div>
-<%= javascript_include_tag 'categories', type: :module, 'data-turbolinks-track': 'reload' %>

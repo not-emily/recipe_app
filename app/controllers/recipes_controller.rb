@@ -2,7 +2,6 @@ class RecipesController < ApplicationController
   before_action :authenticate_user
 
   def index
-    @recipes = Recipe.for_user(@current_user.id)
     @categories = Category.for_user(@current_user.id)
   end
 
@@ -15,7 +14,10 @@ class RecipesController < ApplicationController
   end
 
   def create
-    recipe = Recipe.new(recipe_params)
+    recipe = Recipe.new(
+        :name => params[:name],
+        :user_id => @current_user.id
+      )
     recipe.cover_image.attach(params[:cover_image])
     if recipe.save
       # Create categories
@@ -29,13 +31,13 @@ class RecipesController < ApplicationController
             return
           end
         else
-          flash[:error] = "Can't find category"
+          flash[:error] = "Can't find category #{category_apikey}"
           redirect_to new_recipe_path
           return
         end
       end
 
-      flash[:notice] = "Recipe is added"
+      flash[:success] = "Recipe is added"
       redirect_to recipes_path
     else
       flash[:error] = recipe.errors.full_messages
@@ -50,8 +52,4 @@ class RecipesController < ApplicationController
   def destroy
   end
 
-  private
-  def recipe_params
-    params.permit(:user_id, :name, :cover_image)
-  end
 end

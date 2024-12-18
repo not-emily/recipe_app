@@ -4,5 +4,6 @@
         <%= form_tag(recipes_path, class: "form-validate", multipart: true) do %>
             <%= render "recipes/recipe_form" %>
         <% end %>
+        <%= render "categories/new_category_modal" %>
     </div>
 </section>

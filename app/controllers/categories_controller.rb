@@ -7,19 +7,19 @@ class CategoriesController < ApplicationController
     end
 
     def create
+        p "*" * 50
+        p "Params"
+        p params
+        p "*" * 50
         category = Category.new(
-                :name => params[:category_name], 
-                :user_id => @current_user.id
+                :category_name => params[:category_name], 
+                :user_id => @current_user.id,
             )
         if category.save
-            render json: {"name": category["name"], "category_apikey": category["apikey"]}
+            render json: {"category_name": category["category_name"], "category_apikey": category["apikey"]}
         else
             flash[:error] = category.errors.full_messages
             redirect_to recipes_path
         end
     end
-
-
-    private
-
 end

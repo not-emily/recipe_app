@@ -9,16 +9,19 @@ import { Api } from "./lib/api.js";
 }())
 
 function handleNewCategory() {
-    const name = document.getElementById('category_name').value;
+    const nameElement = document.getElementById('category_name');
+    const name = nameElement.value;
+
     const add_another = document.getElementById('category_add_another').checked;
     // Create the category
     createCategory(name);
 
     // Close the modal
     if (add_another) {
-        name.value = "";
+        nameElement.value = "";
     } else {
         console.log("CLOSING MODAL");
+        nameElement.value = "";
         const newCategoryModal = document.getElementById('newCategoryModal');
         const modal = bootstrap.Modal.getInstance(newCategoryModal);
         modal.hide();
@@ -39,7 +42,7 @@ function updateDOM(data) {
     const category_buttons = document.getElementById('category_buttons');
     const empty_notice = document.getElementById('no_category_notice');
 
-    const new_button = `<button type="button" class="btn btn-outline-danger" data-key="${data.category_apikey}">${data.name}</button>`
+    const new_button = `<button type="button" class="btn btn-outline-danger" data-key="${data.category_apikey}">${data.category_name}</button>`
     category_buttons.innerHTML = empty_notice ? new_button : category_buttons.innerHTML + new_button
 }
 

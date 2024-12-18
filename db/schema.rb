@@ -44,7 +44,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_12_13_165102) do
 
   create_table "categories", force: :cascade do |t|
     t.integer "user_id"
-    t.string "name"
+    t.string "category_name"
     t.string "apikey"
     t.string "status"
     t.datetime "created_at", null: false

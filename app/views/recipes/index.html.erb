@@ -1,13 +1,23 @@
-<h1>Recipes#index</h1>
-<p>Find me in app/views/recipes/index.html.erb</p>
-<a href="<%= new_recipe_path%>">Add new recipe</a>
+<section id="recipes-index">
+    <div class="container">
+        <div class="page-action-header">
+            <h1>Recipes</h1>
+            <a href="<%= new_recipe_path%>">Add new recipe</a>
+        </div>
 
-<ul>
-<% @recipes.each do |recipe| %>
-    <li><% if recipe.cover_image.attached? %><%= image_tag url_for(recipe.cover_image), class: "img-fluid img-gallery"%><% end %><%= recipe.name %></li>
-<% end %>
-</ul>
-
-<% @categories.each do |category|%>
-<a href="<%= category_path(category.apikey) %>"><%= category.name %></a>
-<% end %>
+        <div id="recipes__categories">
+            <% @categories.each do |category|%>
+            <a href="<%= category_path(category.apikey) %>">
+                <div class="category">
+                    <% if category.category_cover_image.attached? %>
+                    <%= image_tag url_for(category.category_cover_image) %>
+                    <% else %>
+                    <%= image_tag '/assets/recipe_covers/breakfast1.png' %>
+                    <% end %>
+                    <h2><%= category.category_name %></h2>
+                </div>
+            </a>
+            <% end %>
+        </div>
+    </div>
+</section>

@@ -3,10 +3,10 @@ class Category < ApplicationRecord
     has_many :recipe_categories, :dependent => :destroy
     has_many :recipes, through: :recipe_categories
 
-    has_one_attached :cover_image
+    has_one_attached :category_cover_image
 
     validates_presence_of           :user_id
-    validates_presence_of           :name
+    validates_presence_of           :category_name
 
     before_validation               :set_apikey,
                                     :on => :create

@@ -1,6 +1,10 @@
-<h1><%= @category.name %></h1>
-<% if @recipes %>
-    <% @recipes.each do |recipe| %>
-        <p><%= recipe.name %></p>
-    <% end %>
-<% end %>
+<section>
+    <div class="container">
+        <h1><%= @category.category_name %></h1>
+        <% if @recipes %>
+            <% @recipes.each do |recipe| %>
+                <p><%= recipe.name %></p>
+            <% end %>
+        <% end %>
+    </div>
+</section>
